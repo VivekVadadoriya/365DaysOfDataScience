@@ -12,4 +12,13 @@
   
 ## Day 2: Did Some Airflow Projects
 - [Edit/Save file in Ubuntu](https://stackoverflow.com/questions/17535428/how-to-edit-save-a-file-through-ubuntu-terminal) : How to edit/save a file through Ubuntu Terminal
-- [Airflow Download Podcast](https://www.youtube.com/watch?v=s-r2gEr7YW4&ab_channel=Dataquest) :
+- [Getting Started with Apache Airflow](https://www.youtube.com/watch?v=iKGdg4MDEBI&ab_channel=AIEngineering) : Best video to learn airflow concept. [Download Code](https://github.com/Sri-nidhi/airflow2.0-demo)  
+- [Airflow Download Podcast](https://www.youtube.com/watch?v=s-r2gEr7YW4&ab_channel=Dataquest) : Step by Step Guide - [Link](https://github.com/dataquestio/project-walkthroughs/blob/master/podcast_summary/steps.md). **Some Command :**
+  - nano ~/airflow/airflow.cfg : To edit config file and set dag path and other changes.
+  - sqlite3 databaseName.db : To create sqlite database.
+  - airflow connections add 'connectionName' --conn-type 'sqlite' --conn-host 'databasePath/databaseName.db' : To add connection in airflow.
+  - airflow connections get connectionName : Get all the connection by the name connectionName.
+  - pwd : To get current file path.
+  - Learn how to pass data from one task to other in airflow.
+  - Learn how to download audio file.
+- 
