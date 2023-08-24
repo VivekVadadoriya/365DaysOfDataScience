@@ -22,3 +22,14 @@
   - Learn how to pass data from one task to other in airflow.
   - Learn how to download audio file.
 - [Webinar on Airflow](https://youtu.be/Fy6oRT-8GlY) : Good for beginners, But not worth time if you have already created dag.
+
+## Day 3: Learn DBT and Some Maths
+- [DBT Fundamental Course](https://courses.getdbt.com/courses/fundamentals) : **Learnings :**
+  - ETL is the process of creating new database objects by extracting data from multiple data sources, transforming it on a local or third party machine, and loading the transformed data into a data warehouse.
+  - ELT is a more recent process of creating new database objects by first extracting and loading raw data into a data warehouse and then transforming that data directly in the warehouse.
+  - The new ELT process is made possible by the introduction of cloud-based data warehouse technologies.
+- [Linera Algebra](https://www.3blue1brown.com/topics/linear-algebra) : **Topics Covered :**
+  - Essence of linear algebra preview
+  - Vectors, what even are they?
+  - Linear combinations, span, and basis vectors
+  - Linear transformations and matrices
