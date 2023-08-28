@@ -33,3 +33,37 @@
   - Vectors, what even are they?
   - Linear combinations, span, and basis vectors
   - Linear transformations and matrices
+
+## Day 4: Continue Learning DBT
+- [DBT Fundamental Course](https://courses.getdbt.com/courses/fundamentals) : **Learnings :**
+  - dbt Cloud is a hosted version that streamlines development with an online Integrated Development Environment (IDE) and an interface to run dbt on a schedule.
+  - dbt Core is a command line tool that can be run locally.
+  - dbt is designed to handle the transformation layer of the ‘extract-load-transform’ framework for data platforms. dbt creates a connection to a data platform and runs SQL code against the warehouse to transform data.
+  - Quickstart for dbt Cloud and Snowflake: [Link](https://docs.getdbt.com/quickstarts/snowflake?step=4)
+  - Models : 
+    - Models are .sql files that live in the models folder.
+    - Models are simply written as select statements - there is no DDL/DML that needs to be written around this. This allows the developer to focus on the logic.
+    - The materialization can be configured as a table with the following configuration block at the top of the model file: `{{ config(materialized='table') }}`
+    - When dbt run is executing, dbt is wrapping the select statement in the correct DDL/DML to build that model as a table/view. If that model already exists in the data warehouse, dbt will automatically drop that table or view before building the new database object.
+  - Modularity :
+    - Modularity is the degree to which a system's components may be separated and recombined, often with the benefit of flexibility and variety in use. This allows us to build data artifacts in logical steps.
+  - ref Macro:
+    - Models can be written to reference the underlying tables and views that were building the data warehouse. Example: `{{ ref('stg_customers') }}` compiles to analytics.dbt_jsmith.stg_customers.
+  - Command - If `dbt run -s staging` will run all models that exist in models/staging.
+  - Sources:
+    - Sources represent the raw data that is loaded into the data warehouse.
+    - We can reference tables in our models with an explicit table name (raw.jaffle_shop.customers).
+    - However, setting up Sources in dbt and referring to them with the source function enables a few important tools.
+      - Multiple tables from a single source can be configured in one place.
+      - Sources are easily identified as green nodes in the Lineage Graph.
+      - You can use dbt source freshness to check the freshness of raw tables.
+    - The ref function is used to build dependencies between models.
+    - Similarly, the source function is used to build the dependency of one model to a source. Example : {{ source('jaffle_shop','customers') }}
+  - Source freshness:
+    -  Freshness thresholds can be set in the YML file where sources are configured. For each table, the keys loaded_at_field and freshness must be configured.
+    - A threshold can be configured for giving a warning and an error with the keys warn_after and error_after.
+    - The freshness of sources can then be determined with the command dbt source freshness.
+
+## Day 5: Continue Learning DBT
+- [DBT Fundamental Course](https://courses.getdbt.com/courses/fundamentals) : **Learnings :**
+  - 
