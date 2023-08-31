@@ -66,4 +66,34 @@
 
 ## Day 5: Continue Learning DBT
 - [DBT Fundamental Course](https://courses.getdbt.com/courses/fundamentals) : **Learnings :**
-  - 
+  - Testing :
+    - Testing is used in software engineering to make sure that the code does what we expect it to.
+    - In dbt, tests are written as select statements. These select statements are run against your materialized models to ensure they meet your assertions.
+    - Tests in dbt :
+      - Generic : Generic tests are written in YAML and return the number of records that do not meet your assertions. These are run on specific columns in a model. Example ::
+        - Unique tests to see if every value in a column is unique.
+        - Not_null tests to see if every value in a column is not null.
+        - Accepted_values tests to make sure every value in a column is equal to a value in a provided list
+        - Relationships tests to ensure that every value in a column exists in a column in another model.
+      - Singular : Singular tests are specific queries that you run against your models. These are run on the entire model.
+    - Generic tests are configured in a YAML file, whereas singular tests are stored as select statements in the tests folder.
+    - Tests can be run against your current project using a range of commands:
+      - `dbt test` : dbt test runs all tests in the dbt project.
+      - `dbt test --select test_type:generic`
+      - `dbt test --select test_type:singular`
+      - `dbt test --select one_specific_model `
+  - Documentation :
+    - Documentation is essential for an analytics team to work effectively and efficiently. Strong documentation empowers users to self-service questions about data and enables new team members to on-board quickly.
+    - In dbt, models are built in SQL files. These models are documented in YML files that live in the same folder as the models.
+    - Documentation of models occurs in the YML files (where generic tests also live) inside the models directory. It is helpful to store the YML file in the same subfolder as the models you are documenting.
+    - If a longer form, more styled version of text would provide a strong description, doc blocks can be used to render markdown in the generated documentation.
+    - Command `dbt docs generate` is used to generate docs.
+  - Deployment :
+    - Deployment in dbt (or running dbt in production) is the process of running dbt on a schedule in a deployment environment. The deployment environment will typically run from the default branch (i.e., main, master) and use a dedicated deployment schema (e.g., dbt_prod). The models built in deployment are then used to power dashboards, reporting, and other key business decision-making processes.
+    - The use of development environments and branches makes it possible to continue to build your dbt project without affecting the models, tests, and documentation that are running in production.
+    - Scheduling a job in dbt Cloud :
+      - Scheduling of future jobs can be configured in dbt Cloud on the Jobs page.
+      - Commands: A single job can run multiple dbt commands. For example, you can run dbt run and dbt test back to back on a schedule. You don't need to configure these as separate jobs.
+      - Triggers: This section is where the schedule can be set for the particular job.
+      - After a job has been created, you can manually start the job by selecting Run Now
+      - The results of a particular job run can be reviewed as the job completes and over time.
